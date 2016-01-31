@@ -9,8 +9,8 @@ var common = {
 
     cantabria: {
     	'list-folloup': {
-    		url: 'http://anpecantabria.org/wp/estado-actual-listas-por-cuerpos/',
-    		method: 'post',
+    		uri: 'http://anpecantabria.org/wp/estado-actual-listas-por-cuerpos/',
+    		method: 'POST',
     		types: {
     			maestros: { 
     				id: 597,

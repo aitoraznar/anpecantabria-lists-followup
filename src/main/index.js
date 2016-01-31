@@ -9,8 +9,6 @@ var emailService = require('../services/emailService.js');
 cantabriaService.getFollowUpList(function(err, html) {
     var maestrosInfo = cantabriaService.extractInfo(html, properties.cantabria['list-folloup'].types.maestros);
 
-    console.log('====> INFO', maestrosInfo);
-
     var alarm = cantabriaService.checkAlarm(maestrosInfo, 300);
     if (alarm.isAlert || alarm.isWarning) {
     	var emailContent = emailService.createEmailContent(maestrosInfo);
@@ -21,7 +19,7 @@ cantabriaService.getFollowUpList(function(err, html) {
 			    if(error){
 			        return console.log(error);
 			    }
-			    
+
 			    console.log('Message sent: ' + info.response);
 			});
     }

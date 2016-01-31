@@ -1,8 +1,20 @@
 var nodemailer = require('nodemailer');
 var fs = require('fs');
 
-function createEmailContent() {
-	return fs.readFileSync('test/fixtures/emailContent.html', 'utf-8');
+function createEmailContent(info) {
+	var template = fs.readFileSync('test/fixtures/emailContent.html', 'utf-8')
+			.replace(/{{specialty}}/gm, info.type)
+			.replace(/{{vacantes_tiempo_completo}}/gm, info.vacantes_tiempo_completo)
+			.replace(/{{vacantes_tiempo_parcial}}/gm, info.vacantes_tiempo_parcial)
+			.replace(/{{vacantes_bilingues_tiempo_completo}}/gm, info.vacantes_bilingues_tiempo_completo)
+			.replace(/{{vacantes_bilingues_tiempo_parcial}}/gm, info.vacantes_bilingues_tiempo_parcial)
+			.replace(/{{sustituciones_tiempo_completo}}/gm, info.sustituciones_tiempo_completo)
+			.replace(/{{sustituciones_tiempo_parcial}}/gm, info.sustituciones_tiempo_parcial)
+			.replace(/{{sustituciones_bilingues_tiempo_completo}}/gm, info.sustituciones_bilingues_tiempo_completo)
+			.replace(/{{sustituciones_bilingues_tiempo_parcial}}/gm, info.sustituciones_bilingues_tiempo_parcial)
+			.replace(/{{lastUpdated}}/gm, info.lastUpdated);
+
+	return template;
 }
 
 function sendEmail(from, to, content, callback) {

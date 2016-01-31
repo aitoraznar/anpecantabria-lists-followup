@@ -1,4 +1,5 @@
 process.env.NODE_ENV = 'production';
+var fs = require('fs');
 var properties = require('../../../properties');
 
 describe('Cantabria Service' , function() {
@@ -7,12 +8,18 @@ describe('Cantabria Service' , function() {
     var resultHtml;
     
     beforeEach(function() {
-        
+        cantabriaService.getFollowUpList = function(callback) {
+            var fixture = fs.readFileSync('test/fixtures/maestros-list-response.html', 'utf-8');
+            callback(null, fixture);
+        };
     });
    
     describe('With the FollowUp List', function() {
-        beforeEach(function() {
-            resultHtml = cantabriaService.getFollowUpList();
+        beforeEach(function(done) {
+            cantabriaService.getFollowUpList(function(err, result) {
+                resultHtml = result;
+                done();
+            });
         });
         
         it('Must exist a response', function() {

@@ -1,9 +1,24 @@
 var properties = require('../../properties');
 var cheerio = require('cheerio');
-var fs = require('fs');
+var request = require('request');
 
-function getFollowUpList() {
-	return fs.readFileSync('test/fixtures/maestros-list-response.html', 'utf-8');
+function getFollowUpList(callback) {
+	var followUpConfig = properties.cantabria['list-folloup'];
+
+	request({
+		uri: followUpConfig.uri,
+		method: followUpConfig.method,
+		form: {
+			'cuerpo_elegido': properties.cantabria['list-folloup'].types.maestros.id
+		}
+	},
+	function(err, response, body) {
+		if (err) {
+			return err;
+		}
+
+		callback(null, body);
+	});
 }
 
 function extractInfo(html, type) {

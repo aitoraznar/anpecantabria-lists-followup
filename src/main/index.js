@@ -2,6 +2,7 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 console.log('Environment:', process.env.NODE_ENV);
 
+var properties = require('../../properties');
 var cantabriaService = require('../services/cantabriaService.js');
 
 cantabriaService.getFollowUpList(function(err, html) {

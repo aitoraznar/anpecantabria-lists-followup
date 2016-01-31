@@ -11,12 +11,19 @@ cantabriaService.getFollowUpList(function(err, html) {
 
     console.log('====> INFO', maestrosInfo);
 
-    var alarm = cantabriaService.checkAlarm(maestrosInfo);
-    if (alarm) {
-    	var emailContent = emailContent.createEmailContent(maestrosInfo);
-    	emailService.sendEmail('ren_aitor@hotmail.com', emailContent, function(result) {
-
-    	});
+    var alarm = cantabriaService.checkAlarm(maestrosInfo, 300);
+    if (alarm.isAlert || alarm.isWarning) {
+    	var emailContent = emailService.createEmailContent(maestrosInfo);
+    	emailService.sendEmail(
+    		properties.cantabria['list-folloup'].email.from,
+    		properties.cantabria['list-folloup'].email.to, 
+    		emailContent, function(error, info){
+			    if(error){
+			        return console.log(error);
+			    }
+			    
+			    console.log('Message sent: ' + info.response);
+			});
     }
 });
 

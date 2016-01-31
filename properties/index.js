@@ -17,6 +17,10 @@ var common = {
     				keyName: 'PEDAGOGÍA TERAPÉUTICA'
     			}
     		},
+    		email: {
+    			from: 'Anpe Cantabria List FollowUp <info@anpefollowup.com>',
+    			to: 'renaitor@gmail.com'
+    		},
     		currentPosition: 345
     	}
     }

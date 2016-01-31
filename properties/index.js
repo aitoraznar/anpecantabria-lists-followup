@@ -7,14 +7,18 @@ var _ = require('lodash');
 // ============================================
 var common = {
 
-    
+    cantabria: {
+    	'list-folloup': {
+    		url: 'http://anpecantabria.org/wp/estado-actual-listas-por-cuerpos/',
+    		method: 'post',
+    		types: {
+    			maestros: 597
+    		}
+    	}
+    }
 
 };
 
 // Export the config object based on the NODE_ENV
 // ==============================================
-module.exports = {
-    development: _.merge(common, require('./development.js') || {}),
-    test:        _.merge(common, require('./test.js') || {}),
-    production:  _.merge(common, require('./production.js') || {})
-}
+module.exports = _.merge(common, require('./' + process.env.NODE_ENV + '.js') || {});

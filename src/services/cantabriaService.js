@@ -30,6 +30,7 @@ function extractInfo(html, type) {
     	var currentType = $($('td', elem)[0]).text();
     	if (type.keyName === currentType) {
 			info = {
+				'type': currentType,
 				'vacantes_tiempo_completo': $($('td', elem)[1]).text(),
 				'vacantes_tiempo_parcial': $($('td', elem)[2]).text(),
 				'vacantes_bilingues_tiempo_completo': $($('td', elem)[3]).text(),
@@ -58,6 +59,7 @@ function checkAlarm(info, maxPosition) {
 	}
 
 	// Remove lastUpdate in the checking
+	var lastUpdated = info.lastUpdated;
 	delete info.lastUpdated;
 
 	for(var data in info) {
@@ -69,6 +71,9 @@ function checkAlarm(info, maxPosition) {
 			alarm.isWarning = parseInt(info[data], 10) >= (maxPosition - 3) && parseInt(info[data], 10) < maxPosition;
 		}
 	}
+
+	// Restore lastUpdated
+	info.lastUpdated = lastUpdated;
 
 	return alarm;
 }

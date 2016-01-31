@@ -9,9 +9,9 @@ var emailService = require('../services/emailService.js');
 cantabriaService.getFollowUpList(function(err, html) {
     var maestrosInfo = cantabriaService.extractInfo(html, properties.cantabria['list-folloup'].types.maestros);
 
-    var alarm = cantabriaService.checkAlarm(maestrosInfo, 300);
+    var alarm = cantabriaService.checkAlarm(maestrosInfo, properties.cantabria['list-folloup'].currentPosition);
     if (alarm.isAlert || alarm.isWarning) {
-    	var emailContent = emailService.createEmailContent(maestrosInfo);
+    	var emailContent = emailService.createEmailContent(maestrosInfo, alarm, properties.cantabria['list-folloup'].currentPosition);
     	emailService.sendEmail(
     		properties.cantabria['list-folloup'].email.from,
     		properties.cantabria['list-folloup'].email.to, 

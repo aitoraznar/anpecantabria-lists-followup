@@ -1,7 +1,7 @@
 var nodemailer = require('nodemailer');
 var fs = require('fs');
 
-function createEmailContent(info) {
+function createEmailContent(info, alarm, currentPosition) {
 	var template = fs.readFileSync('test/fixtures/emailContent.html', 'utf-8')
 			.replace(/{{specialty}}/gm, info.type)
 			.replace(/{{vacantes_tiempo_completo}}/gm, info.vacantes_tiempo_completo)
@@ -13,6 +13,18 @@ function createEmailContent(info) {
 			.replace(/{{sustituciones_bilingues_tiempo_completo}}/gm, info.sustituciones_bilingues_tiempo_completo)
 			.replace(/{{sustituciones_bilingues_tiempo_parcial}}/gm, info.sustituciones_bilingues_tiempo_parcial)
 			.replace(/{{lastUpdated}}/gm, info.lastUpdated);
+
+	if (alarm.isAlert) {
+		template = template.replace(/{{alert}}/gm, '<h2 style="color:red">Tienes una vacante activa con tu posición: <b>' + currentPosition + '</b></h2>');
+	} else {
+		template = template.replace(/{{alert}}/gm, '');
+	}
+
+	if (alarm.isWarning) {
+		template = template.replace(/{{warning}}/gm, '<h2 style="color:orange">Cuidado!! Se acerca una vacante activa con tu posición: <b>' + currentPosition + '</b></h2>');
+	} else {
+		template = template.replace(/{{warning}}/gm, '');
+	}
 
 	return template;
 }

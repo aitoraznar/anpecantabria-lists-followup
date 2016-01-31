@@ -16,7 +16,8 @@ var common = {
     				id: 597,
     				keyName: 'PEDAGOGÍA TERAPÉUTICA'
     			}
-    		}
+    		},
+    		currentPosition: 345
     	}
     }
 

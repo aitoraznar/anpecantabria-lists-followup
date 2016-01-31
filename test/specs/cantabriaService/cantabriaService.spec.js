@@ -5,6 +5,7 @@ var properties = require('../../../properties');
 describe('Cantabria Service' , function() {
     var baseSrc = '../../../src/';
     var cantabriaService = require(baseSrc + 'services/cantabriaService.js');
+    var currentListPosition = 10;
     var resultHtml;
     
     beforeEach(function() {
@@ -46,6 +47,49 @@ describe('Cantabria Service' , function() {
             });
 
         });
+    });
+
+    describe('Alarm & Warning system', function() {
+        var alertFixture;
+        var noAlarmFixture;
+        var warningFixture;
+        var alertAndWarningFixture;
+
+        beforeEach(function() {
+            alertFixture = require('../../fixtures/alert.json');
+            noAlarmFixture = require('../../fixtures/no-alarm.json');
+            warningFixture = require('../../fixtures/warning.json');
+            alertAndWarningFixture = require('../../fixtures/alertAndWarning.json');
+        });
+
+        it('Should NOT detect an Alarm', function() {
+           var alarm = cantabriaService.checkAlarm(noAlarmFixture, currentListPosition);
+
+           expect(alarm.isAlert).toBeFalsy();
+           expect(alarm.isWarning).toBeFalsy();
+        });
+        
+        it('Should detect an Alert', function() {
+           var alarm = cantabriaService.checkAlarm(alertFixture, currentListPosition);
+
+           expect(alarm.isAlert).toBeTruthy();
+           expect(alarm.isWarning).toBeFalsy();
+        });
+
+        it('Should detect a Warning', function() {
+           var alarm = cantabriaService.checkAlarm(warningFixture, currentListPosition);
+
+           expect(alarm.isAlert).toBeFalsy();
+           expect(alarm.isWarning).toBeTruthy();
+        });
+
+        it('Should detect an Alert and Warning', function() {
+           var alarm = cantabriaService.checkAlarm(alertAndWarningFixture, currentListPosition);
+
+           expect(alarm.isAlert).toBeTruthy();
+           expect(alarm.isWarning).toBeTruthy();
+        });
+
     });
     
 

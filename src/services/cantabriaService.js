@@ -47,7 +47,34 @@ function extractInfo(html, type) {
 	return info;
 }
 
+function checkAlarm(info, maxPosition) {
+	var alarm = {
+		isAlert: false,
+		isWarning: false
+	};
+
+	if (!info || !maxPosition) {
+		return alarm;
+	}
+
+	// Remove lastUpdate in the checking
+	delete info.lastUpdated;
+
+	for(var data in info) {
+		if (!alarm.isAlert) {
+			alarm.isAlert = parseInt(info[data], 10) >= maxPosition;
+		}
+		
+		if (!alarm.isWarning && !alarm.isAlert) {
+			alarm.isWarning = parseInt(info[data], 10) >= (maxPosition - 3) && parseInt(info[data], 10) < maxPosition;
+		}
+	}
+
+	return alarm;
+}
+
 module.exports = {
 	getFollowUpList: getFollowUpList,
-	extractInfo: extractInfo
+	extractInfo: extractInfo,
+	checkAlarm: checkAlarm
 };

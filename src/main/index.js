@@ -1,12 +1,7 @@
-var module1 = require('../module1/index.js');
-var Person = module1.Person;
+// Set default node environment to development
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+console.log('Environment:', process.env.NODE_ENV);
 
-// Module 1
-var john = new Person("John", "Box");
-console.log(john.name);
-// should equal "John Box"
-john.name = "John Travolta";
-console.log(john.lastName);
-// should equal "Travolta"
-console.log(john.firstName);
-// should equal "John"
+var cantabriaService = require('../services/cantabriaService.js');
+
+

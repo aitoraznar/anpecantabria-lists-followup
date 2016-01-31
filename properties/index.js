@@ -29,7 +29,7 @@ var common = {
     		},
     		email: {
     			from: 'Anpe Cantabria List FollowUp <info@anpefollowup.com>',
-    			to: 'renaitor@gmail.com'
+    			to: 'renaitor@gmail.com, maitane.medina@gmail.com'
     		},
     		currentPosition: 345
     	}

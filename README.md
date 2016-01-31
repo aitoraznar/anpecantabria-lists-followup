@@ -6,6 +6,8 @@ Permite hacer el seguimiento de las listas de Anpe Cantabria
 #### Install dependencies
 * **npm install** : Exec it on the terminal
 * **npm install -g grunt** : Grunt is required
+* export EMAIL_USER='user@hotmail.com' // User to send email (Default provider Hotmail)
+* export EMAIL_PASS='password' // Password to send email
 
 #### Develop
 * **node .** : To launch the app, see the results in the terminal.

@@ -14,9 +14,24 @@ var common = {
     		types: {
     			maestros: { 
     				id: 597,
+    				//keyName: 'EDUCACIÓN INFANTIL'
+    				//keyName: 'INGLÉS'
+    				//keyName: 'FRANCÉS'
+    				//keyName: 'EDUCACIÓN FÍSICA'
+    				//keyName: 'MÚSICA'
     				keyName: 'PEDAGOGÍA TERAPÉUTICA'
+    				//keyName: 'AUDICIÓN Y LENGUAJE'
+    				//keyName: 'PRIMARIA'
+    				//keyName: 'Ciencias Sociales'
+    				//keyName: 'Matemáticas y Ciencias Naturales'
+    				//keyName: 'Lengua y Literatura'
     			}
-    		}
+    		},
+    		email: {
+    			from: 'Anpe Cantabria List FollowUp <info@anpefollowup.com>',
+    			to: 'renaitor@gmail.com'
+    		},
+    		currentPosition: 345
     	}
     }
 

@@ -1,0 +1,41 @@
+<html>
+<head>
+	<style>table,th,td,tr {border:1px solid black; font-family: verdana, arial; font-size: 10pt; width:100% }</style>
+</head>
+<body>
+	<h1>Estado de las listas para {{specialty}}</h1>
+
+	{{alert}}
+	{{warning}}
+
+	<table>
+		<tbody>
+			<tr>
+				<th>Especialidad</th>
+				<th>Vacantes tiempo completo</th>
+				<th>Vacantes tiempo parcial</th>
+				<th>Vacantes bilingües tiempo completo</th>
+				<th>Vacantes bilingües tiempo parcial</th>
+				<th>Sustituciones tiempo completo</th>
+				<th>Sustituciones tiempo parcial</th>
+				<th>Sustituciones bilingües tiempo completo</th>
+				<th>Sustituciones bilingües tiempo parcial</th>
+				<th>Fecha última modificación</th>
+			</tr>
+			<tr>
+				<td>{{specialty}}</td>
+				<td>{{vacantes_tiempo_completo}}</td>
+				<td>{{vacantes_tiempo_parcial}}</td>
+				<td>{{vacantes_bilingues_tiempo_completo}}</td>
+				<td>{{vacantes_bilingues_tiempo_parcial}}</td>
+				<td>{{sustituciones_tiempo_completo}}</td>
+				<td>{{sustituciones_tiempo_parcial}}</td>
+				<td>{{sustituciones_bilingues_tiempo_completo}}</td>
+				<td>{{sustituciones_bilingues_tiempo_parcial}}</td>
+				<td>{{lastUpdated}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

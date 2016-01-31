@@ -8,7 +8,7 @@ var cantabriaService = require('../services/cantabriaService.js');
 var emailService = require('../services/emailService.js');
 
 var cronJob = new CronJob(
-	'* * * * *', // Every 11:00
+	'0 11 * * *', // Every 11:00
 	function() {
 		cantabriaService.getFollowUpList(function(err, html) {
 		    var maestrosInfo = cantabriaService.extractInfo(html, properties.cantabria['list-folloup'].types.maestros);

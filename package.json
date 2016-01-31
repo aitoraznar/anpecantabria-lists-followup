@@ -1,5 +1,5 @@
 {
-  "name": "anpecantabria",
+  "name": "anpecantabria-lists-followup",
   "version": "0.1.0",
   "description": "Permite hacer el seguimiento de las listas de Anpe Cantabria",
   "main": "src/main/index.js",

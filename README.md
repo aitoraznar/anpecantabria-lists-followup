@@ -1,5 +1,7 @@
-A basic TDD node project with jasmine testing
+Anpe Cantabria List FollowUp
 =================
+
+Permite hacer el seguimiento de las listas de Anpe Cantabria
 
 #### Install dependencies
 * **npm install** : Exec it on the terminal
@@ -9,19 +11,6 @@ A basic TDD node project with jasmine testing
 * **node .** : To launch the app, see the results in the terminal.
 * **npm run dev** : To start developing with jshint and jasmine testing
 * **npm test** or **grunt test** : To launch jasmine tests
-
-
-Base example:
-```js
-var john = new Person("John", "Box");
-console.log(john.name);
-// should equal "John Box"
-john.name = "John Travolta";
-console.log(john.lastName);
-// should equal "Travolta"
-console.log(john.firstName);
-// should equal "John"
-```
 
 
 ### License ISC

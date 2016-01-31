@@ -12,7 +12,10 @@ var common = {
     		url: 'http://anpecantabria.org/wp/estado-actual-listas-por-cuerpos/',
     		method: 'post',
     		types: {
-    			maestros: 597
+    			maestros: { 
+    				id: 597,
+    				keyName: 'PEDAGOGÍA TERAPÉUTICA'
+    			}
     		}
     	}
     }
